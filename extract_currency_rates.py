@@ -18,7 +18,7 @@ def fetch_currency_rates():
         print(f"Ошибка при запросе к API: {e}")
         return None
 
-def save_to_csv(data: dict, filename: str = "raw_currency_rates.csv"):
+def save_to_csv(data: dict, filename: str = "raw_data/raw_currency_rates.csv"):
     df = pd.DataFrame(data["Valute"]).T.reset_index()
     df["timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     df.to_csv(filename, mode="a", header=not os.path.exists(filename), index=False)
